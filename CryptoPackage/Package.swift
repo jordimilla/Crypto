@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "CryptoPackage",
+    platforms: [
+        .iOS("15.0"),
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library( name: "Domain",targets: ["Domain"]),
@@ -21,10 +24,17 @@ let package = Package(
         .target(name: "Domain", dependencies: []),
         .testTarget(name: "DomainTest", dependencies: ["Domain"]),
         
-        .target(name: "Data", dependencies: ["Domain"]),
-        .testTarget(name: "DataTest", dependencies: ["Data"]),
+        .target(name: "Data",
+                dependencies: ["Domain"],
+                resources: [.process("Resources/data.json")]
+               ),
+        .testTarget(name: "DataTest",
+                    dependencies: ["Data"]
+                   ),
         
-            .target(name: "Presentation", dependencies: ["Domain"]),
-            .testTarget(name: "PresentationTest", dependencies: ["Presentation"]),
+        .target(name: "Presentation",
+                dependencies: ["Domain"]
+               ),
+        .testTarget(name: "PresentationTest", dependencies: ["Presentation"]),
     ]
 )

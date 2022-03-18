@@ -16,6 +16,8 @@
 		C4B7DA9027E5127F004C7DA4 /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA8F27E5127F004C7DA4 /* CryptoTests.swift */; };
 		C4B7DA9A27E5127F004C7DA4 /* CryptoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA9927E5127F004C7DA4 /* CryptoUITests.swift */; };
 		C4B7DA9C27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA9B27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift */; };
+		C4B7DAAF27E525BE004C7DA4 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAAE27E525BE004C7DA4 /* Data */; };
+		C4B7DAB127E525BE004C7DA4 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAB027E525BE004C7DA4 /* Domain */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B7DAB127E525BE004C7DA4 /* Domain in Frameworks */,
+				C4B7DAAF27E525BE004C7DA4 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +89,7 @@
 				C4B7DA8E27E5127F004C7DA4 /* CryptoTests */,
 				C4B7DA9827E5127F004C7DA4 /* CryptoUITests */,
 				C4B7DA7627E5127B004C7DA4 /* Products */,
+				C4B7DAA927E524F2004C7DA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +106,7 @@
 		C4B7DA7727E5127B004C7DA4 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				C4B7DAB227E528B1004C7DA4 /* DI */,
 				C4B7DA7827E5127B004C7DA4 /* AppDelegate.swift */,
 				C4B7DA7A27E5127B004C7DA4 /* SceneDelegate.swift */,
 				C4B7DA7C27E5127B004C7DA4 /* ViewController.swift */,
@@ -129,6 +135,20 @@
 			path = CryptoUITests;
 			sourceTree = "<group>";
 		};
+		C4B7DAA927E524F2004C7DA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4B7DAB227E528B1004C7DA4 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +165,10 @@
 			dependencies = (
 			);
 			name = Crypto;
+			packageProductDependencies = (
+				C4B7DAAE27E525BE004C7DA4 /* Data */,
+				C4B7DAB027E525BE004C7DA4 /* Domain */,
+			);
 			productName = Crypto;
 			productReference = C4B7DA7527E5127B004C7DA4 /* Crypto.app */;
 			productType = "com.apple.product-type.application";
@@ -604,6 +628,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C4B7DAAE27E525BE004C7DA4 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		C4B7DAB027E525BE004C7DA4 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4B7DA6D27E5127B004C7DA4 /* Project object */;
 }
