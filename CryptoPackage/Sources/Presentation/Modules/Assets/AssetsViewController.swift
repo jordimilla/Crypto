@@ -6,6 +6,10 @@ class AssestsViewController: UIViewController {
     
     // MARK: - Views
     let titleLabel = UILabel()
+    let stackViewFilters = UIStackView()
+    let cryptoButton = RoundedRectButton()
+    let commoditieButton = RoundedRectButton()
+    let fiatButton = RoundedRectButton()
     let tableView = UITableView()
     
     var viewModel: AssetsViewModel
@@ -37,12 +41,27 @@ class AssestsViewController: UIViewController {
         viewModel.requestCollection()
 
     }
+    
+    @objc func loadCrypto() {
+        commoditieButton.clear()
+        fiatButton.clear()
+    }
+    
+    @objc func loadCommodities() {
+        cryptoButton.clear()
+        fiatButton.clear()
+    }
+    
+    @objc func loadFiat() {
+        cryptoButton.clear()
+        commoditieButton.clear()
+    }
 }
 
 extension AssestsViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
