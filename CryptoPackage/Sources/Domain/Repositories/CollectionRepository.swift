@@ -5,5 +5,5 @@ public enum CollectionRepositoryError: Error {
 }
 
 public protocol CollectionRepository {
-    func retrieveCollection() -> AnyPublisher<Collection, CollectionRepositoryError>
+    func retrieveCollection() -> AnyPublisher<Collection, Error>
 }

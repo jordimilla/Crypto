@@ -4,12 +4,12 @@ import Domain
 public struct CollectionMapper: Mapper {
     
     static public func map(input: CollectionResponse) -> Collection {
-        Collection(cryptoCoin: mapCollection(input: input.cryptocoins.attributes),
-                   commodities: mapCollection(input: input.commodities.attributes),
-                   fiats: mapCollection(input: input.fiats.attributes),
-                   wallets: mapCollection(input: input.wallets.attributes),
-                   commodityWallets: mapCollection(input: input.commodityWallets.attributes),
-                   fiatWallets: mapCollection(input: input.fiatWallets.attributes))
+        Collection(cryptoCoin: mapCollection(input: input.cryptocoins.map { $0.attributes }),
+                   commodities: mapCollection(input: input.commodities.map { $0.attributes }),
+                   fiats: mapCollection(input: input.fiats.map { $0.attributes }),
+                   wallets: mapCollection(input: input.wallets.map { $0.attributes }),
+                   commodityWallets: mapCollection(input: input.commodityWallets.map { $0.attributes }),
+                   fiatWallets: mapCollection(input: input.fiatWallets.map { $0.attributes }))
     }
     
     static public func mapCollection(input: [CryptoCoinTO]) -> [CryptoCoin] {

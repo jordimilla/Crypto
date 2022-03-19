@@ -14,7 +14,7 @@ public class QueryUseCase<P: UseCaseParams, R>: UseCase<P, AnyPublisher<R, Error
         cancellable?.cancel()
     }
     
-    override open func build(params: P? = nil) -> AnyPublisher<R, Error> {
+    open override func build(params: P? = nil) -> AnyPublisher<R, Error> {
         preconditionFailure("This method must be overridden")
     }
     

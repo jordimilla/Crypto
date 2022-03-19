@@ -10,7 +10,7 @@ public class GetCollectionUseCase: QueryUseCase<NotUseCaseParams, Collection> {
         super.init(dispacherHelper: dispacherHelper)
     }
    
-    public func build() -> AnyPublisher<Collection, CollectionRepositoryError> {
+    public override func build(params: NotUseCaseParams? = nil) -> AnyPublisher<Collection, Error> {
         return collectionRepository.retrieveCollection()
     }
 }

@@ -3,7 +3,7 @@ import Combine
 import Domain
 
 protocol CollectionDataSource {
-    func retrieveCollection() -> AnyPublisher<Collection, CollectionDataSourceError>
+    func retrieveCollection() -> AnyPublisher<Collection, Error>
 }
 
 enum CollectionDataSourceError: Error {
@@ -24,23 +24,21 @@ struct CollectionDataSourceImpl: CollectionDataSource {
         self.jsonFileReader = jsonFileReader
     }
     
-    func retrieveCollection() -> AnyPublisher<Collection, CollectionDataSourceError> {
-        Deferred {
-            Future<Collection, CollectionDataSourceError> { promise in
+    func retrieveCollection() -> AnyPublisher<Collection, Error> {
+        Deferred{
+            Future<Data, Error> { promise in
                 guard let jsonData = try? jsonFileReader.read(fileName: Constants.collectionDataJSONFileName, bundle: .module) else {
-                    promise(.failure(.unableToReadJSONFile))
+                    promise(.failure(CollectionDataSourceError.unableToReadJSONFile))
                     return
                 }
-
-                let jsonDecoder = JSONDecoder()
-                
-                guard let response = try? jsonDecoder.decode(BaseResponse<CollectionResponse>.self, from: jsonData) else {
-                    promise(.failure(.unableToDecodeData))
-                    return
-                }
-                let collection = CollectionMapper.map(input: response.data.attributes)
-                promise(.success(collection))
+                promise(.success(jsonData))
             }
+        }.tryMap {
+            let jsonDecoder = JSONDecoder()
+            
+            let response = try jsonDecoder.decode(BaseResponse<CollectionResponse>.self, from: $0)
+            return CollectionMapper.map(input: response.data.attributes)
+            
         }
         .eraseToAnyPublisher()
     }

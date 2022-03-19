@@ -9,9 +9,9 @@ struct CollectionRepositoryImpl: CollectionRepository {
         self.collectionDataSource = collectionDataSource
     }
     
-    func retrieveCollection() -> AnyPublisher<Collection, CollectionRepositoryError> {
+    func retrieveCollection() -> AnyPublisher<Collection, Error> {
         collectionDataSource.retrieveCollection()
-            .mapError { _ in CollectionRepositoryError.dataSourceError }
+//            .mapError { _ in CollectionRepositoryError.dataSourceError }
             .eraseToAnyPublisher()
     }
     
