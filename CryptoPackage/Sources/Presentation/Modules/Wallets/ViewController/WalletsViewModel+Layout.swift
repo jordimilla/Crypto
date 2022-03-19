@@ -1,7 +1,7 @@
 import CryptoUIKit
 import UIKit
 
-extension AssestsViewController {
+extension WalletsViewController {
     
     func setupUI() {
         setupSubviews()
@@ -17,9 +17,9 @@ extension AssestsViewController {
         view.addSubview(titleLabel)
         view.addSubview(stackViewFilters)
         view.addSubview(tableView)
-        stackViewFilters.addArrangedSubview(cryptoButton)
-        stackViewFilters.addArrangedSubview(commoditieButton)
-        stackViewFilters.addArrangedSubview(fiatButton)
+        stackViewFilters.addArrangedSubview(fiatWalletButton)
+        stackViewFilters.addArrangedSubview(walletsButton)
+        stackViewFilters.addArrangedSubview(commodityWalletsButton)
         
     }
     
@@ -56,17 +56,17 @@ extension AssestsViewController {
     }
     
     private func setupButtons() {
-        cryptoButton.setTitle(Constants.firstSection, for: .normal)
-        cryptoButton.setTitleColor(Color.text.color, for: .normal)
-        cryptoButton.addTarget(self, action: #selector(loadCrypto), for: .touchUpInside)
+        fiatWalletButton.setTitle(Constants.firstSection, for: .normal)
+        fiatWalletButton.setTitleColor(Color.text.color, for: .normal)
+        fiatWalletButton.addTarget(self, action: #selector(loadFiatWallets), for: .touchUpInside)
         
-        commoditieButton.setTitle(Constants.secondSection, for: .normal)
-        commoditieButton.setTitleColor(Color.text.color, for: .normal)
-        commoditieButton.addTarget(self, action: #selector(loadCommodities), for: .touchUpInside)
+        walletsButton.setTitle(Constants.secondSection, for: .normal)
+        walletsButton.setTitleColor(Color.text.color, for: .normal)
+        walletsButton.addTarget(self, action: #selector(loadWallets), for: .touchUpInside)
         
-        fiatButton.setTitle(Constants.thirdSection, for: .normal)
-        fiatButton.setTitleColor(Color.text.color, for: .normal)
-        fiatButton.addTarget(self, action: #selector(loadFiat), for: .touchUpInside)
+        commodityWalletsButton.setTitle(Constants.thirdSection, for: .normal)
+        commodityWalletsButton.setTitleColor(Color.text.color, for: .normal)
+        commodityWalletsButton.addTarget(self, action: #selector(loadComodityWallets), for: .touchUpInside)
     }
     
     private func setupLabel() {
@@ -78,7 +78,7 @@ extension AssestsViewController {
         tableView.backgroundColor = Color.background.color
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(AssetsCell.self, forCellReuseIdentifier: AssetsCell.indentifier)
+        tableView.register(WalletCell.self, forCellReuseIdentifier: WalletCell.indentifier)
     }
     
 }

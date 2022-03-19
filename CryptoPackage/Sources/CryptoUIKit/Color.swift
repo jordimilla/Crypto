@@ -16,4 +16,5 @@ public extension Color {
     static let text = Color("Text")
     static let line = Color("Line")
     static let backgroundButton = Color("BackgroundButton")
+    static let deleted = Color("Deleted")
 }

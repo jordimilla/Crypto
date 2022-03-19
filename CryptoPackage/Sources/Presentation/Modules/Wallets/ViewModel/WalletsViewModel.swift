@@ -2,7 +2,7 @@ import Domain
 import Foundation
 import Combine
 
-final class AssetsViewModel {
+final class WalletsViewModel {
     
     private let getCollectionUseCase: QueryUseCase<NotUseCaseParams, Collection>
 
@@ -26,8 +26,8 @@ final class AssetsViewModel {
                                     wallets: [Wallet(name: "Wallet 1", symbol: "BTC", balance: "8936.50", defaultWallet: true, deleted: false),
                                               Wallet(name: "Wallet 2", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: false),
                                               Wallet(name: "Wallet 2", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: true)],
-                                    commodityWallets: [CommodityWallet(name: "CommodityWallet 1", symbol: "BTC", balance: "8936.50", defaultWallet: true, deleted: false),
-                                                       CommodityWallet(name: "CommodityWallet 2", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: false),
+                                    commodityWallets: [CommodityWallet(name: "CommodityWallet 1", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: false),
+                                                       CommodityWallet(name: "CommodityWallet 2", symbol: "BTC", balance: "8936.50", defaultWallet: true, deleted: false),
                                                        CommodityWallet(name: "CommodityWallet 2", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: true)],
                                     fiatWallets: [FiatWallet(name: "FiatWallet 1", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: true),
                                                   FiatWallet(name: "FiatWallet 2", symbol: "BTC", balance: "8936.50", defaultWallet: false, deleted: true),

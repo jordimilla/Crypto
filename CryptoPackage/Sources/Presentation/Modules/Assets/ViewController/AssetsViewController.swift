@@ -23,6 +23,7 @@ class AssestsViewController: UIViewController {
     var currentData: TypeData = .cryptoCoin
 
     var collectionData: Collection?
+    var fiatFiltered: [Fiat]?
 
     public init(viewModel: AssetsViewModel) {
         self.viewModel = viewModel
@@ -41,24 +42,31 @@ class AssestsViewController: UIViewController {
     }
     
     @objc func loadCrypto() {
-        commoditieButton.clear()
-        fiatButton.clear()
+        commoditieButton.activateButton(state: false)
+        fiatButton.activateButton(state: false)
         currentData = .cryptoCoin
         tableView.reloadData()
     }
     
     @objc func loadCommodities() {
-        cryptoButton.clear()
-        fiatButton.clear()
+        cryptoButton.activateButton(state: false)
+        fiatButton.activateButton(state: false)
         currentData = .commodities
         tableView.reloadData()
     }
     
     @objc func loadFiat() {
-        cryptoButton.clear()
-        commoditieButton.clear()
+        cryptoButton.activateButton(state: false)
+        commoditieButton.activateButton(state: false)
         currentData = .fiats
         tableView.reloadData()
+    }
+    
+    func filterFiatByHasWallet() {
+        fiatFiltered = collectionData?.fiats.filter() {
+            let hasWallet = $0.hasWallets == true
+            return hasWallet
+        }
     }
 }
 
@@ -81,7 +89,7 @@ extension AssestsViewController: UITableViewDataSource {
             }
             return commodities.count
         case .fiats:
-            guard let fiats = collectionData?.fiats else {
+            guard let fiats = fiatFiltered else {
                 return 0
             }
             return fiats.count
@@ -89,25 +97,23 @@ extension AssestsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AssetsCell.indentifier, for: indexPath) as? AssetsCell else {
+            return UITableViewCell()
+        }
+        
         switch currentData {
         case .cryptoCoin:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
-                return UITableViewCell()
-            }
             let data = collectionData?.cryptoCoin[indexPath.row]
-            
             cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, price: data?.price)
             return cell
         case .commodities:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
-                return UITableViewCell()
-            }
             let data =  collectionData?.commodities[indexPath.row]
-            
             cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, price: data?.price)
             return cell
         case .fiats:
-            return UITableViewCell()
+            let data = fiatFiltered?[indexPath.row]
+            cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, hasWallet: data?.hasWallets)
+            return cell
         }
         
     }
@@ -119,7 +125,7 @@ extension AssestsViewController: UITableViewDataSource {
         case .commodities:
             return 100
         case .fiats:
-            return 100
+            return 75
         }
     }
 }

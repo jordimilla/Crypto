@@ -1,4 +1,4 @@
-extension AssestsViewController {
+extension WalletsViewController {
     
     func setupViewModel() {
         bindCollectionCompleted()
@@ -14,8 +14,7 @@ extension AssestsViewController {
                 print("Loading")
             case .success(let collection):
                 self?.collectionData = collection
-                self?.filterFiatByHasWallet()
-                self?.cryptoButton.activateButton(state: true)
+                self?.fiatWalletButton.activateButton(state: true)
                 self?.tableView.reloadData()
             case .failure:
                 print("failure")

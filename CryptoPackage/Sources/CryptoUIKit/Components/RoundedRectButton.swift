@@ -20,13 +20,12 @@ public class RoundedRectButton: UIButton {
         self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
     }
     
-    public func clear() {
-        selectedState = false
+    public func activateButton(state: Bool) {
+        selectedState = state
         layoutSubviews()
     }
 
     @objc func onPress() {
         selectedState = true
-
     }
 }
