@@ -14,17 +14,23 @@ class AssestsViewController: UIViewController {
     
     var viewModel: AssetsViewModel
     
-    let crypto = [CryptoCoin(symbol: "BTC"),
-                  CryptoCoin(symbol: "ETH"),
-                  CryptoCoin(symbol: "DOT")]
+    enum TypeData {
+        case cryptoCoin
+        case commodities
+        case fiats
+    }
     
-    let commodities = [CryptoCoin(symbol: "Commodities 1"),
-                       CryptoCoin(symbol: "Commodities 2"),
-                       CryptoCoin(symbol: "Commodities 3")]
-    
-    let fiat = [CryptoCoin(symbol: "Dolar"),
-                       CryptoCoin(symbol: "Euro"),
-                       CryptoCoin(symbol: "Rublo")]
+    var currentData: TypeData = .cryptoCoin
+
+    let collection = Collection(cryptoCoin: [CryptoCoin(symbol: "BTC"),
+                                             CryptoCoin(symbol: "ETH"),
+                                             CryptoCoin(symbol: "DOT")],
+                                commodities: [CryptoCoin(symbol: "Commodities 1"),
+                                              CryptoCoin(symbol: "Commodities 2"),
+                                              CryptoCoin(symbol: "Commodities 3")],
+                                fiats: [CryptoCoin(symbol: "Dolar"),
+                                        CryptoCoin(symbol: "Euro"),
+                                        CryptoCoin(symbol: "Rublo")])
 
     public init(viewModel: AssetsViewModel) {
         self.viewModel = viewModel
@@ -45,46 +51,74 @@ class AssestsViewController: UIViewController {
     @objc func loadCrypto() {
         commoditieButton.clear()
         fiatButton.clear()
+        currentData = .cryptoCoin
+        tableView.reloadData()
     }
     
     @objc func loadCommodities() {
         cryptoButton.clear()
         fiatButton.clear()
+        currentData = .commodities
+        tableView.reloadData()
     }
     
     @objc func loadFiat() {
         cryptoButton.clear()
         commoditieButton.clear()
+        currentData = .fiats
+        tableView.reloadData()
     }
 }
 
 extension AssestsViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return crypto.count
+        switch currentData {
+        case .cryptoCoin:
+            return collection.cryptoCoin.count
+        case .commodities:
+            return collection.cryptoCoin.count
+        case .fiats:
+            return collection.cryptoCoin.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
+        switch currentData {
+        case .cryptoCoin:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
+                return UITableViewCell()
+            }
+            let data = collection.cryptoCoin[indexPath.row]
+            
+            cell.bind(name: data.symbol)
+            return cell
+        case .commodities:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
+                return UITableViewCell()
+            }
+            let data =  collection.commodities[indexPath.row]
+            
+            cell.bind(name: data.symbol)
+            return cell
+        case .fiats:
             return UITableViewCell()
         }
-        let data = crypto[indexPath.row]
         
-        cell.bind(name: data.symbol)
-        return cell 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        switch currentData {
+        case .cryptoCoin:
+            return 100
+        case .commodities:
+            return 100
+        case .fiats:
+            return 75
+        }
     }
-    
-    
-}
-
-extension AssestsViewController: UITableViewDelegate {
-    
 }

@@ -4,7 +4,9 @@ import Domain
 public struct CollectionMapper: Mapper {
     
     static public func map(input: CollectionResponse) -> Collection {
-        Collection(cryptoCoin: mapCollection(input: input.cryptocoins.attributes))
+        Collection(cryptoCoin: mapCollection(input: input.cryptocoins.attributes),
+                   commodities: mapCollection(input: input.cryptocoins.attributes),
+                   fiats: mapCollection(input: input.cryptocoins.attributes))
     }
     
     static public func mapCollection(input: [CryptoCoinTO]) -> [CryptoCoin] {
