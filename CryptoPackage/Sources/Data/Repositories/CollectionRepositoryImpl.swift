@@ -3,24 +3,16 @@ import Domain
 
 struct CollectionRepositoryImpl: CollectionRepository {
     
-    private let dependencies: Dependencies
+    private let collectionDataSource: CollectionDataSource
     
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    init(collectionDataSource: CollectionDataSource) {
+        self.collectionDataSource = collectionDataSource
     }
     
     func retrieveCollection() -> AnyPublisher<Collection, CollectionRepositoryError> {
-        dependencies.collectionDataSource.retrieveCollection()
+        collectionDataSource.retrieveCollection()
             .mapError { _ in CollectionRepositoryError.dataSourceError }
             .eraseToAnyPublisher()
     }
     
-}
-
-// MARK: - Dependencies
-
-extension CollectionRepositoryImpl {
-    struct Dependencies {
-        let collectionDataSource: CollectionDataSource
-    }
 }

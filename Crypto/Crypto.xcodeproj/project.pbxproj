@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C4B7DA7927E5127B004C7DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA7827E5127B004C7DA4 /* AppDelegate.swift */; };
 		C4B7DA7B27E5127B004C7DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA7A27E5127B004C7DA4 /* SceneDelegate.swift */; };
-		C4B7DA7D27E5127B004C7DA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA7C27E5127B004C7DA4 /* ViewController.swift */; };
-		C4B7DA8027E5127B004C7DA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4B7DA7E27E5127B004C7DA4 /* Main.storyboard */; };
 		C4B7DA8227E5127E004C7DA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B7DA8127E5127E004C7DA4 /* Assets.xcassets */; };
 		C4B7DA8527E5127E004C7DA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4B7DA8327E5127E004C7DA4 /* LaunchScreen.storyboard */; };
 		C4B7DA9027E5127F004C7DA4 /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA8F27E5127F004C7DA4 /* CryptoTests.swift */; };
@@ -18,6 +16,8 @@
 		C4B7DA9C27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA9B27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift */; };
 		C4B7DAAF27E525BE004C7DA4 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAAE27E525BE004C7DA4 /* Data */; };
 		C4B7DAB127E525BE004C7DA4 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAB027E525BE004C7DA4 /* Domain */; };
+		C4B7DAB927E53022004C7DA4 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAB827E53022004C7DA4 /* Presentation */; };
+		C4B7DAC127E54362004C7DA4 /* FeatureAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DAC027E54362004C7DA4 /* FeatureAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,6 @@
 		C4B7DA7527E5127B004C7DA4 /* Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B7DA7827E5127B004C7DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4B7DA7A27E5127B004C7DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C4B7DA7C27E5127B004C7DA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C4B7DA7F27E5127B004C7DA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4B7DA8127E5127E004C7DA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4B7DA8427E5127E004C7DA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4B7DA8627E5127E004C7DA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +50,7 @@
 		C4B7DA9927E5127F004C7DA4 /* CryptoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUITests.swift; sourceTree = "<group>"; };
 		C4B7DA9B27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C4B7DAA827E512B2004C7DA4 /* CryptoPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CryptoPackage; path = ../CryptoPackage; sourceTree = "<group>"; };
+		C4B7DAC027E54362004C7DA4 /* FeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B7DAB127E525BE004C7DA4 /* Domain in Frameworks */,
+				C4B7DAB927E53022004C7DA4 /* Presentation in Frameworks */,
 				C4B7DAAF27E525BE004C7DA4 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,11 +106,9 @@
 		C4B7DA7727E5127B004C7DA4 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				C4B7DAB227E528B1004C7DA4 /* DI */,
+				C4B7DAC227E54381004C7DA4 /* DI */,
 				C4B7DA7827E5127B004C7DA4 /* AppDelegate.swift */,
 				C4B7DA7A27E5127B004C7DA4 /* SceneDelegate.swift */,
-				C4B7DA7C27E5127B004C7DA4 /* ViewController.swift */,
-				C4B7DA7E27E5127B004C7DA4 /* Main.storyboard */,
 				C4B7DA8127E5127E004C7DA4 /* Assets.xcassets */,
 				C4B7DA8327E5127E004C7DA4 /* LaunchScreen.storyboard */,
 				C4B7DA8627E5127E004C7DA4 /* Info.plist */,
@@ -142,9 +140,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C4B7DAB227E528B1004C7DA4 /* DI */ = {
+		C4B7DAC227E54381004C7DA4 /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				C4B7DAC027E54362004C7DA4 /* FeatureAssembly.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -168,6 +167,7 @@
 			packageProductDependencies = (
 				C4B7DAAE27E525BE004C7DA4 /* Data */,
 				C4B7DAB027E525BE004C7DA4 /* Domain */,
+				C4B7DAB827E53022004C7DA4 /* Presentation */,
 			);
 			productName = Crypto;
 			productReference = C4B7DA7527E5127B004C7DA4 /* Crypto.app */;
@@ -259,7 +259,6 @@
 			files = (
 				C4B7DA8527E5127E004C7DA4 /* LaunchScreen.storyboard in Resources */,
 				C4B7DA8227E5127E004C7DA4 /* Assets.xcassets in Resources */,
-				C4B7DA8027E5127B004C7DA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4B7DA7D27E5127B004C7DA4 /* ViewController.swift in Sources */,
+				C4B7DAC127E54362004C7DA4 /* FeatureAssembly.swift in Sources */,
 				C4B7DA7927E5127B004C7DA4 /* AppDelegate.swift in Sources */,
 				C4B7DA7B27E5127B004C7DA4 /* SceneDelegate.swift in Sources */,
 			);
@@ -323,14 +322,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C4B7DA7E27E5127B004C7DA4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4B7DA7F27E5127B004C7DA4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4B7DA8327E5127E004C7DA4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -468,7 +459,6 @@
 				INFOPLIST_FILE = Crypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -496,7 +486,6 @@
 				INFOPLIST_FILE = Crypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -637,6 +626,10 @@
 		C4B7DAB027E525BE004C7DA4 /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
+		};
+		C4B7DAB827E53022004C7DA4 /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

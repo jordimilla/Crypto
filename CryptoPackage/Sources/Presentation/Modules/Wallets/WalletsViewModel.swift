@@ -2,7 +2,7 @@ import Domain
 import Foundation
 import Combine
 
-final class AssetsViewModel {
+final class WalletsViewModel {
     
     private let getCollectionUseCase: QueryUseCase<NotUseCaseParams, Collection>
     

@@ -11,45 +11,37 @@ enum CollectionDataSourceError: Error {
     case unableToDecodeData
 }
 
-// MARK: - EnergyLogsAPIDataSource
 
 private enum Constants {
     static let collectionDataJSONFileName = "data"
 }
 
 
-struct CollectionAPIDataSource: CollectionDataSource {
-    private let dependencies: Dependencies
+struct CollectionDataSourceImpl: CollectionDataSource {
+    private let jsonFileReader: JSONReader
     
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    init(jsonFileReader: JSONReader) {
+        self.jsonFileReader = jsonFileReader
     }
     
     func retrieveCollection() -> AnyPublisher<Collection, CollectionDataSourceError> {
         Deferred {
             Future<Collection, CollectionDataSourceError> { promise in
-                guard let jsonData = try? dependencies.jsonFileReader.read(fileName: Constants.collectionDataJSONFileName, bundle: .module) else {
+                guard let jsonData = try? jsonFileReader.read(fileName: Constants.collectionDataJSONFileName, bundle: .module) else {
                     promise(.failure(.unableToReadJSONFile))
                     return
                 }
 
                 let jsonDecoder = JSONDecoder()
-                guard let response = try? jsonDecoder.decode(CollectionResponse.self, from: jsonData) else {
+                
+                guard let response = try? jsonDecoder.decode(BaseResponse<CollectionResponse>.self, from: jsonData) else {
                     promise(.failure(.unableToDecodeData))
                     return
                 }
-                let collection = CollectionMapper.map(input: response)
+                let collection = CollectionMapper.map(input: response.data.attributes)
                 promise(.success(collection))
             }
         }
         .eraseToAnyPublisher()
-    }
-}
-
-// MARK: - Dependencies
-
-extension CollectionAPIDataSource {
-    struct Dependencies {
-        let jsonFileReader: JSONReader
     }
 }

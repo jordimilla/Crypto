@@ -1,12 +1,12 @@
 import Domain
 
-final class RepositoryAssembly {
+public class RepositoryAssembly {
     
-    static func makeSeriesRepository() -> CollectionRepository {
+    public static func makeCollectionRepository() -> CollectionRepository {
         let jsonReader = JSONFileReader()
-        let dataSource = CollectionAPIDataSource(dependencies: .init(jsonFileReader: jsonReader))
-        let dependencies = CollectionRepositoryImpl.Dependencies.init(collectionDataSource: dataSource)
-        let repository = CollectionRepositoryImpl(dependencies: dependencies)
+        let dataSource = CollectionDataSourceImpl(jsonFileReader: jsonReader)
+        let repository = CollectionRepositoryImpl(collectionDataSource: dataSource)
+        
         return repository
     }
 }
