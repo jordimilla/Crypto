@@ -22,15 +22,7 @@ class AssestsViewController: UIViewController {
     
     var currentData: TypeData = .cryptoCoin
 
-    let collection = Collection(cryptoCoin: [CryptoCoin(symbol: "BTC"),
-                                             CryptoCoin(symbol: "ETH"),
-                                             CryptoCoin(symbol: "DOT")],
-                                commodities: [CryptoCoin(symbol: "Commodities 1"),
-                                              CryptoCoin(symbol: "Commodities 2"),
-                                              CryptoCoin(symbol: "Commodities 3")],
-                                fiats: [CryptoCoin(symbol: "Dolar"),
-                                        CryptoCoin(symbol: "Euro"),
-                                        CryptoCoin(symbol: "Rublo")])
+    var collectionData: Collection?
 
     public init(viewModel: AssetsViewModel) {
         self.viewModel = viewModel
@@ -44,8 +36,8 @@ class AssestsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupViewModel()
         viewModel.requestCollection()
-
     }
     
     @objc func loadCrypto() {
@@ -79,11 +71,20 @@ extension AssestsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch currentData {
         case .cryptoCoin:
-            return collection.cryptoCoin.count
+            guard let cryptoCoin = collectionData?.cryptoCoin else {
+                return 0
+            }
+            return cryptoCoin.count
         case .commodities:
-            return collection.cryptoCoin.count
+            guard let commodities = collectionData?.commodities else {
+                return 0
+            }
+            return commodities.count
         case .fiats:
-            return collection.cryptoCoin.count
+            guard let fiats = collectionData?.fiats else {
+                return 0
+            }
+            return fiats.count
         }
     }
     
@@ -93,17 +94,17 @@ extension AssestsViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
                 return UITableViewCell()
             }
-            let data = collection.cryptoCoin[indexPath.row]
+            let data = collectionData?.cryptoCoin[indexPath.row]
             
-            cell.bind(name: data.symbol)
+            cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, price: data?.price)
             return cell
         case .commodities:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCommoditiesCell.indentifier, for: indexPath) as? CryptoCommoditiesCell else {
                 return UITableViewCell()
             }
-            let data =  collection.commodities[indexPath.row]
+            let data =  collectionData?.commodities[indexPath.row]
             
-            cell.bind(name: data.symbol)
+            cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, price: data?.price)
             return cell
         case .fiats:
             return UITableViewCell()
@@ -118,7 +119,11 @@ extension AssestsViewController: UITableViewDataSource {
         case .commodities:
             return 100
         case .fiats:
-            return 75
+            return 100
         }
     }
+}
+
+extension AssestsViewController: UITableViewDelegate {
+
 }

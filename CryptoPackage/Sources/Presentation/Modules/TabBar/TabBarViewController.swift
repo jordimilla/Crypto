@@ -1,4 +1,5 @@
 import UIKit
+import CryptoUIKit
 
 class TabBarViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class TabBarViewController: UIViewController {
     }
     
     func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = Color.background.color
     }
     
     func setupTabBarController() {

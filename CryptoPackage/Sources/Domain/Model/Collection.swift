@@ -2,12 +2,12 @@ import Foundation
 
 public struct Collection: Equatable {
     public let cryptoCoin: [CryptoCoin]
-    public let commodities: [CryptoCoin]
-    public let fiats: [CryptoCoin]
+    public let commodities: [Commodities]
+    public let fiats: [Fiat]
     
     public init(cryptoCoin: [CryptoCoin],
-                commodities: [CryptoCoin],
-                fiats: [CryptoCoin]) {
+                commodities: [Commodities],
+                fiats: [Fiat]) {
         
         self.cryptoCoin = cryptoCoin
         self.commodities = commodities

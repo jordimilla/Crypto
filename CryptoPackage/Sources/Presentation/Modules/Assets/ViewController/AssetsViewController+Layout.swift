@@ -40,16 +40,15 @@ extension AssestsViewController {
         tableView.anchor(top: stackViewFilters.bottomAnchor,
                          left: view.safeAreaLayoutGuide.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.safeAreaLayoutGuide.rightAnchor,
-                         topConstant: 24)
+                         right: view.safeAreaLayoutGuide.rightAnchor)
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = Color.background.color
     }
     
     private func setupStackView() {
-        stackViewFilters.backgroundColor = .white
+        stackViewFilters.backgroundColor = Color.background.color
         stackViewFilters.axis = .horizontal
         stackViewFilters.alignment = .fill
         stackViewFilters.distribution = .fillProportionally
@@ -58,15 +57,15 @@ extension AssestsViewController {
     
     private func setupButtons() {
         cryptoButton.setTitle("Cryptocoins", for: .normal)
-        cryptoButton.setTitleColor(.black, for: .normal)
+        cryptoButton.setTitleColor(Color.text.color, for: .normal)
         cryptoButton.addTarget(self, action: #selector(loadCrypto), for: .touchUpInside)
         
         commoditieButton.setTitle("Commodities", for: .normal)
-        commoditieButton.setTitleColor(.black, for: .normal)
+        commoditieButton.setTitleColor(Color.text.color, for: .normal)
         commoditieButton.addTarget(self, action: #selector(loadCommodities), for: .touchUpInside)
         
         fiatButton.setTitle("Fiats", for: .normal)
-        fiatButton.setTitleColor(.black, for: .normal)
+        fiatButton.setTitleColor(Color.text.color, for: .normal)
         fiatButton.addTarget(self, action: #selector(loadFiat), for: .touchUpInside)
     }
     
@@ -76,10 +75,9 @@ extension AssestsViewController {
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = .white
-        tableView.delegate = self
+        tableView.backgroundColor = Color.background.color
         tableView.dataSource = self
-        
+        tableView.delegate = self
         tableView.register(CryptoCommoditiesCell.self, forCellReuseIdentifier: CryptoCommoditiesCell.indentifier)
     }
     

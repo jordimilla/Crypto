@@ -1,4 +1,5 @@
 import UIKit.UINavigationController
+import CryptoUIKit
 
 class TabBar: UITabBarController {
     
@@ -23,12 +24,12 @@ class TabBar: UITabBarController {
     }
     
     private func setupAppearance() {
-        UITabBar.appearance().barTintColor = .white
+        UITabBar.appearance().barTintColor = Color.background.color
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         let lineView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
-        lineView.backgroundColor = .gray
-        tabBar.tintColor = .black
+        lineView.backgroundColor = Color.line.color
+        tabBar.tintColor = Color.backgroundButton.color
         tabBar.isTranslucent = false
         tabBar.addSubview(lineView)
     }

@@ -1,4 +1,5 @@
 import UIKit
+import CryptoKit
 
 public class RoundedRectButton: UIButton {
 
@@ -12,10 +13,10 @@ public class RoundedRectButton: UIButton {
     public override func layoutSubviews(){
         super.layoutSubviews()
         layer.borderWidth = 1
-        layer.borderColor = selectedState ? UIColor.blue.cgColor : UIColor.gray.cgColor
+        layer.borderColor = selectedState ? Color.backgroundButton.color.cgColor : Color.line.color.cgColor
         layer.cornerRadius = frame.height / 2
-        backgroundColor = selectedState ? UIColor.blue : UIColor.white
-        self.titleLabel?.textColor = selectedState ? UIColor.white : UIColor.black
+        backgroundColor = selectedState ? Color.backgroundButton.color : Color.background.color
+        self.titleLabel?.textColor = selectedState ? Color.text.color : Color.text.color
         self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
     }
     

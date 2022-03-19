@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CryptoCoinTO: Decodable, Encodable {
+public struct CommoditiesTO: Decodable, Encodable {
     let name: String
     let icon: String
     let symbol: String

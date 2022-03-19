@@ -1,14 +1,14 @@
 import Foundation
 
-public struct CryptoCoinTO: Decodable, Encodable {
+public struct FiatTO: Decodable, Encodable {
     let name: String
     let icon: String
     let symbol: String
-    let price: String
+    let hasWallets: Bool
 
     private enum CodingKeys: String, CodingKey {
         case name, symbol
         case icon = "logo"
-        case price = "avg_price"
+        case hasWallets = "has_wallets"
     }
 }

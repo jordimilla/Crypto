@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CryptoCoin: Equatable {
+public struct Commodities: Equatable {
 
     public let name: String
     public let icon: String
