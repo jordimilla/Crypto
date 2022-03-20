@@ -79,6 +79,7 @@ extension AssestsViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(AssetsCell.self, forCellReuseIdentifier: AssetsCell.indentifier)
+        tableView.isUserInteractionEnabled = false
     }
     
 }

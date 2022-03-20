@@ -35,9 +35,11 @@ class AssestsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadCrypto()
     }
     
     @objc func loadCrypto() {
+        cryptoButton.activateButton(state: true)
         commoditieButton.activateButton(state: false)
         fiatButton.activateButton(state: false)
         currentData = .cryptoCoin

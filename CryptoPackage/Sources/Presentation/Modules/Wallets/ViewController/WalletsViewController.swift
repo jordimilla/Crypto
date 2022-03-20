@@ -6,6 +6,7 @@ class WalletsViewController: UIViewController {
     
     // MARK: - Views
     let titleLabel = UILabel()
+    let defaultLabel = UILabel()
     let stackViewFilters = UIStackView()
     let fiatWalletButton = RoundedRectButton()
     let walletsButton = RoundedRectButton()
@@ -20,7 +21,7 @@ class WalletsViewController: UIViewController {
         case commodityWallets
     }
     
-    var currentData: TypeData = .fiatWallets
+    var currentData: TypeData = .wallets
     var fiatFiltered: [Fiat]?
 
     public init(viewModel: WalletsViewModel) {
@@ -35,19 +36,23 @@ class WalletsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadWallets()
+    }
+    
+    @objc func loadWallets() {
+        walletsButton.activateButton(state: true)
+        fiatWalletButton.activateButton(state: false)
+        commodityWalletsButton.activateButton(state: false)
+        currentData = .wallets
+        setEmpty(state: !viewModel.data.wallets.isEmpty)
+        tableView.reloadData()
     }
     
     @objc func loadFiatWallets() {
         walletsButton.activateButton(state: false)
         commodityWalletsButton.activateButton(state: false)
         currentData = .fiatWallets
-        tableView.reloadData()
-    }
-    
-    @objc func loadWallets() {
-        fiatWalletButton.activateButton(state: false)
-        commodityWalletsButton.activateButton(state: false)
-        currentData = .wallets
+        setEmpty(state: !viewModel.data.fiatWallets.isEmpty)
         tableView.reloadData()
     }
     
@@ -55,6 +60,7 @@ class WalletsViewController: UIViewController {
         fiatWalletButton.activateButton(state: false)
         walletsButton.activateButton(state: false)
         currentData = .commodityWallets
+        setEmpty(state: !viewModel.data.commodityWallets.isEmpty)
         tableView.reloadData()
     }
     

@@ -17,9 +17,10 @@ extension WalletsViewController {
         view.addSubview(titleLabel)
         view.addSubview(stackViewFilters)
         view.addSubview(tableView)
-        stackViewFilters.addArrangedSubview(fiatWalletButton)
         stackViewFilters.addArrangedSubview(walletsButton)
+        stackViewFilters.addArrangedSubview(fiatWalletButton)
         stackViewFilters.addArrangedSubview(commodityWalletsButton)
+        view.addSubview(defaultLabel)
         
     }
     
@@ -29,6 +30,9 @@ extension WalletsViewController {
                      right: view.safeAreaLayoutGuide.rightAnchor,
                      leftConstant: 24,
                      rightConstant: 24)
+        
+        defaultLabel.anchorCenterYToSuperview()
+        defaultLabel.anchorCenterXToSuperview()
         
         stackViewFilters.anchor(top: titleLabel.bottomAnchor,
                                 left: view.safeAreaLayoutGuide.leftAnchor,
@@ -72,6 +76,10 @@ extension WalletsViewController {
     private func setupLabel() {
         titleLabel.text = Constants.title
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        defaultLabel.text = Constants.emptyText
+        defaultLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        defaultLabel.textColor = Color.line.color
+        defaultLabel.isHidden = true
     }
     
     private func setupTableView() {
@@ -79,6 +87,11 @@ extension WalletsViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(WalletCell.self, forCellReuseIdentifier: WalletCell.indentifier)
+        tableView.isUserInteractionEnabled = false
+    }
+    
+    func setEmpty(state: Bool) {
+        defaultLabel.isHidden = state
     }
     
 }
