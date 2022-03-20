@@ -87,7 +87,6 @@ extension WalletsViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(WalletCell.self, forCellReuseIdentifier: WalletCell.indentifier)
-        tableView.isUserInteractionEnabled = false
     }
     
     func setEmpty(state: Bool) {

@@ -7,9 +7,9 @@ public struct CollectionMapper: Mapper {
         Collection(cryptoCoin: mapCollection(input: input.cryptocoins.map { $0.attributes }),
                    commodities: mapCollection(input: input.commodities.map { $0.attributes }),
                    fiats: mapCollection(input: input.fiats.map { $0.attributes }).filter(){$0.hasWallets == true},
-                   wallets: mapCollection(input: input.wallets.map { $0.attributes }).filter(){$0.deleted == false},
-                   commodityWallets: mapCollection(input: input.commodityWallets.map { $0.attributes }).filter(){$0.deleted == false},
-                   fiatWallets: mapCollection(input: input.fiatWallets.map { $0.attributes }).filter(){$0.deleted == false})
+                   wallets: mapCollection(input: input.wallets.map { $0.attributes }).filter(){$0.deleted == false}.sorted(by: { Double($0.balance) ?? 0 >  Double($1.balance) ?? 0 }),
+                   commodityWallets: mapCollection(input: input.commodityWallets.map { $0.attributes }).filter(){ $0.deleted == false }.sorted(by: { Double($0.balance) ?? 0 >  Double($1.balance) ?? 0 }),
+                   fiatWallets: mapCollection(input: input.fiatWallets.map { $0.attributes }).filter(){$0.deleted == false}.sorted(by: { Double($0.balance) ?? 0 >  Double($1.balance) ?? 0 }))
     }
     
     static public func mapCollection(input: [CryptoCoinTO]) -> [CryptoCoin] {
