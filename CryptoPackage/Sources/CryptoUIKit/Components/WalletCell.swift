@@ -56,18 +56,6 @@ public class WalletCell : UITableViewCell {
         return lbl
     }()
     
-    private let deleteLabel: PaddingLabel = {
-        let lbl = PaddingLabel()
-        lbl.layer.cornerRadius = 8
-        lbl.layer.masksToBounds = true
-        lbl.textColor = Color.text.color
-        lbl.backgroundColor = Color.deleted.color
-        lbl.font = UIFont.preferredFont(forTextStyle: .footnote)
-        lbl.textAlignment = .right
-        lbl.text = "Deleted Wallet"
-        return lbl
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(iconImage)
@@ -76,7 +64,6 @@ public class WalletCell : UITableViewCell {
         stackViewVertical.addArrangedSubview(symbolLabel)
         stackViewVertical.addArrangedSubview(balanceLabel)
         addSubview(defaultLabel)
-        addSubview(deleteLabel)
         setupContraints()
     }
     
@@ -99,22 +86,16 @@ public class WalletCell : UITableViewCell {
                             topConstant: 16,
                             rightConstant: 16)
         
-        deleteLabel.anchor(top: defaultLabel.bottomAnchor,
-                           right: self.rightAnchor,
-                           topConstant: 16,
-                           rightConstant: 16)
-      
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func bind(name: String?, symbol: String?, balance: String? = nil, defaultWallet: Bool? = false, deleted: Bool? = false) {
+    public func bind(name: String?, symbol: String?, balance: String? = nil, defaultWallet: Bool? = false) {
         nameLabel.text = name
         symbolLabel.text = symbol
         balanceLabel.text = balance?.convertDoubleToCurrency()
         defaultLabel.isHidden = !(defaultWallet ?? false)
-        deleteLabel.isHidden = !(deleted ?? false)
     }
 }

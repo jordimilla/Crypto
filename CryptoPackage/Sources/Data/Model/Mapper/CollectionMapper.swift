@@ -6,10 +6,10 @@ public struct CollectionMapper: Mapper {
     static public func map(input: CollectionResponse) -> Collection {
         Collection(cryptoCoin: mapCollection(input: input.cryptocoins.map { $0.attributes }),
                    commodities: mapCollection(input: input.commodities.map { $0.attributes }),
-                   fiats: mapCollection(input: input.fiats.map { $0.attributes }),
-                   wallets: mapCollection(input: input.wallets.map { $0.attributes }),
-                   commodityWallets: mapCollection(input: input.commodityWallets.map { $0.attributes }),
-                   fiatWallets: mapCollection(input: input.fiatWallets.map { $0.attributes }))
+                   fiats: mapCollection(input: input.fiats.map { $0.attributes }).filter(){$0.hasWallets == true},
+                   wallets: mapCollection(input: input.wallets.map { $0.attributes }).filter(){$0.deleted == false},
+                   commodityWallets: mapCollection(input: input.commodityWallets.map { $0.attributes }).filter(){$0.deleted == false},
+                   fiatWallets: mapCollection(input: input.fiatWallets.map { $0.attributes }).filter(){$0.deleted == false})
     }
     
     static public func mapCollection(input: [CryptoCoinTO]) -> [CryptoCoin] {

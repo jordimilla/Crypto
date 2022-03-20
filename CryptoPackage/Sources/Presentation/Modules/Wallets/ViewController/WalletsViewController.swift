@@ -91,15 +91,15 @@ extension WalletsViewController: UITableViewDataSource {
         switch currentData {
         case .fiatWallets:
             let data = viewModel.data.fiatWallets[indexPath.row]
-            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet, deleted: data.deleted)
+            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet)
             return cell
         case .wallets:
             let data = viewModel.data.wallets[indexPath.row]
-            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet, deleted: data.deleted)
+            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet)
             return cell
         case .commodityWallets:
             let data = viewModel.data.commodityWallets[indexPath.row]
-            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet, deleted: data.deleted)
+            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet)
             return cell
         }
         

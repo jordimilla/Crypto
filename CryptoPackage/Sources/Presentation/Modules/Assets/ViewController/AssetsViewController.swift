@@ -58,12 +58,6 @@ class AssestsViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func filterFiatByHasWallet() {
-        fiatFiltered = viewModel.data.fiats.filter() {
-            let hasWallet = $0.hasWallets == true
-            return hasWallet
-        }
-    }
 }
 
 extension AssestsViewController: UITableViewDataSource {
@@ -79,10 +73,7 @@ extension AssestsViewController: UITableViewDataSource {
         case .commodities:
             return viewModel.data.commodities.count
         case .fiats:
-            guard let fiats = fiatFiltered else {
-                return 0
-            }
-            return fiats.count
+            return viewModel.data.fiats.count
         }
     }
     
@@ -101,8 +92,8 @@ extension AssestsViewController: UITableViewDataSource {
             cell.bind(name: data.name, icon: data.icon, symbol: data.symbol, price: data.price)
             return cell
         case .fiats:
-            let data = fiatFiltered?[indexPath.row]
-            cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, hasWallet: data?.hasWallets)
+            let data = viewModel.data.fiats[indexPath.row]
+            cell.bind(name: data.name, icon: data.icon, symbol: data.symbol, hasWallet: data.hasWallets)
             return cell
         }
         
