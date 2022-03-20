@@ -4,10 +4,10 @@ import Domain
 
 public class WalletsAssembly {
     
-    let useCase: GetCollectionUseCase
+    let data: Collection
     
-    public init(useCase: GetCollectionUseCase) {
-        self.useCase = useCase
+    public init(data: Collection) {
+        self.data = data
     }
     
     public func build() -> UIViewController {
@@ -18,7 +18,7 @@ public class WalletsAssembly {
 extension WalletsAssembly {
 
     private func makeViewModel() -> WalletsViewModel {
-        WalletsViewModel(getCollectionUseCase: useCase)
+        WalletsViewModel(data: data)
     }
     
 }

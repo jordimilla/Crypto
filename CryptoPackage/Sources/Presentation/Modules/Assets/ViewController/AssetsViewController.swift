@@ -21,8 +21,6 @@ class AssestsViewController: UIViewController {
     }
     
     var currentData: TypeData = .cryptoCoin
-
-    var collectionData: Collection?
     var fiatFiltered: [Fiat]?
 
     public init(viewModel: AssetsViewModel) {
@@ -37,8 +35,6 @@ class AssestsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupViewModel()
-        viewModel.requestCollection()
     }
     
     @objc func loadCrypto() {
@@ -63,7 +59,7 @@ class AssestsViewController: UIViewController {
     }
     
     func filterFiatByHasWallet() {
-        fiatFiltered = collectionData?.fiats.filter() {
+        fiatFiltered = viewModel.data.fiats.filter() {
             let hasWallet = $0.hasWallets == true
             return hasWallet
         }
@@ -79,15 +75,9 @@ extension AssestsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch currentData {
         case .cryptoCoin:
-            guard let cryptoCoin = collectionData?.cryptoCoin else {
-                return 0
-            }
-            return cryptoCoin.count
+            return viewModel.data.cryptoCoin.count
         case .commodities:
-            guard let commodities = collectionData?.commodities else {
-                return 0
-            }
-            return commodities.count
+            return viewModel.data.commodities.count
         case .fiats:
             guard let fiats = fiatFiltered else {
                 return 0
@@ -103,12 +93,12 @@ extension AssestsViewController: UITableViewDataSource {
         
         switch currentData {
         case .cryptoCoin:
-            let data = collectionData?.cryptoCoin[indexPath.row]
-            cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, price: data?.price)
+            let data = viewModel.data.cryptoCoin[indexPath.row]
+            cell.bind(name: data.name, icon: data.icon, symbol: data.symbol, price: data.price)
             return cell
         case .commodities:
-            let data =  collectionData?.commodities[indexPath.row]
-            cell.bind(name: data?.name, icon: data?.icon, symbol: data?.symbol, price: data?.price)
+            let data = viewModel.data.commodities[indexPath.row]
+            cell.bind(name: data.name, icon: data.icon, symbol: data.symbol, price: data.price)
             return cell
         case .fiats:
             let data = fiatFiltered?[indexPath.row]

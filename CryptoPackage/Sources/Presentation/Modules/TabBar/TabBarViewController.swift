@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 import CryptoUIKit
 
 class TabBarViewController: UIViewController {
@@ -11,7 +12,7 @@ class TabBarViewController: UIViewController {
     
     public init(viewModel: TabBarViewModel) {
         self.viewModel = viewModel
-        
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -21,26 +22,23 @@ class TabBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-    }
-    
-    func setup() {
         setupView()
-        setupTabBarController()
+        setupViewModel()
+        viewModel.requestCollection()
     }
     
     func setupView() {
         view.backgroundColor = Color.background.color
     }
     
-    func setupTabBarController() {
-        let assets = tabBar.createNavController(for: viewModel.assetsProvider(viewModel.navigationController),
+    func setupTabBarController(data: Collection) {
+        let assets = tabBar.createNavController(for: viewModel.assetsProvider(viewModel.navigationController, data),
                                                 title: Constants.assetsTitle,
                                                 image: UIImage(systemName: Constants.iconAssets),
                                                 selectedImage: UIImage(systemName: Constants.iconAssets),
                                                 identifier: Constants.tabAssetsIdentifier)
         
-        let wallets = tabBar.createNavController(for: viewModel.walletsProvider(viewModel.navigationController),
+        let wallets = tabBar.createNavController(for: viewModel.walletsProvider(viewModel.navigationController, data),
                                                  title: Constants.walletsTitle,
                                                  image: UIImage(systemName: Constants.iconWallets),
                                                  selectedImage: UIImage(systemName: Constants.iconWallets),

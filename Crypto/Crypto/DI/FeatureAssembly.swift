@@ -17,7 +17,11 @@ public class FeatureAssembly {
     
     public static let tabBarWithSelectedIndexFeature: SingleParamFeatureProvider<Int> = { navigationController, index in
         
+        let useCase = GetCollectionUseCase(collectionRepository: RepositoryAssembly.makeCollectionRepository(),
+                                           dispacherHelper: HelperAssemblyModule.dispacherHelperProvider())
+        
         return TabBarAssembly(navigationController: navigationController,
+                              getCollectionUseCase: useCase,
                               assetsProvider: assetsFeature,
                               walletsProvider: walletsFeature,
                               selectedIndex: index).build()
@@ -25,18 +29,18 @@ public class FeatureAssembly {
     
     
     
-    public static let assetsFeature: FeatureProvider = { navigationController  in
+    public static let assetsFeature: SingleParamFeatureProvider<Collection> = { navigationController, data  in
         let useCase = GetCollectionUseCase(collectionRepository: RepositoryAssembly.makeCollectionRepository(),
                                            dispacherHelper: HelperAssemblyModule.dispacherHelperProvider())
         
-        return AssetsAssembly(useCase: useCase).build()
+        return AssetsAssembly(data: data).build()
     }
     
-    public static let walletsFeature: FeatureProvider = { navigationController  in
+    public static let walletsFeature: SingleParamFeatureProvider<Collection> = { navigationController, data  in
         let useCase = GetCollectionUseCase(collectionRepository: RepositoryAssembly.makeCollectionRepository(),
                                            dispacherHelper: HelperAssemblyModule.dispacherHelperProvider())
         
-        return WalletsAssembly(useCase: useCase).build()
+        return WalletsAssembly(data: data).build()
     }
 }
 

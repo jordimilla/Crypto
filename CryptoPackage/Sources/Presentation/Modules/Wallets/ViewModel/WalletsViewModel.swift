@@ -4,24 +4,10 @@ import Combine
 
 final class WalletsViewModel {
     
-    private let getCollectionUseCase: QueryUseCase<NotUseCaseParams, Collection>
+    var data: Collection
+    
+    init(data: Collection) {
+        self.data = data
+    }
 
-    @Observable var collectionObservable: Resource<Collection>? = .none
-    
-    init(getCollectionUseCase: QueryUseCase<NotUseCaseParams, Collection>){
-        
-        self.getCollectionUseCase = getCollectionUseCase
-    }
-    
-    public func requestCollection() {
-        
-        getCollectionUseCase.execute(
-            onSuccess: { [unowned self] collectionList in
-                self.collectionObservable = .success(collectionList)
-            },
-            onError: { error in
-                print(error)
-            }
-        )
-    }
 }

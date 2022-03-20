@@ -21,8 +21,6 @@ class WalletsViewController: UIViewController {
     }
     
     var currentData: TypeData = .fiatWallets
-
-    var collectionData: Collection?
     var fiatFiltered: [Fiat]?
 
     public init(viewModel: WalletsViewModel) {
@@ -37,8 +35,6 @@ class WalletsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupViewModel()
-        viewModel.requestCollection()
     }
     
     @objc func loadFiatWallets() {
@@ -63,7 +59,7 @@ class WalletsViewController: UIViewController {
     }
     
     func filterFiatByHasWallet() {
-        fiatFiltered = collectionData?.fiats.filter() {
+        fiatFiltered = viewModel.data.fiats.filter() {
             let hasWallet = $0.hasWallets == true
             return hasWallet
         }
@@ -79,20 +75,11 @@ extension WalletsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch currentData {
         case .fiatWallets:
-            guard let fiatWallets = collectionData?.fiatWallets else {
-                return 0
-            }
-            return fiatWallets.count
+            return viewModel.data.fiatWallets.count
         case .wallets:
-            guard let wallets = collectionData?.wallets else {
-                return 0
-            }
-            return wallets.count
+            return viewModel.data.wallets.count
         case .commodityWallets:
-            guard let commodityWallets = collectionData?.commodityWallets else {
-                return 0
-            }
-            return commodityWallets.count
+            return viewModel.data.commodityWallets.count
         }
     }
     
@@ -103,16 +90,16 @@ extension WalletsViewController: UITableViewDataSource {
         
         switch currentData {
         case .fiatWallets:
-            let data = collectionData?.fiatWallets[indexPath.row]
-            cell.bind(name: data?.name, symbol: data?.symbol, balance: data?.balance, defaultWallet: data?.defaultWallet, deleted: data?.deleted)
+            let data = viewModel.data.fiatWallets[indexPath.row]
+            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet, deleted: data.deleted)
             return cell
         case .wallets:
-            let data =  collectionData?.wallets[indexPath.row]
-            cell.bind(name: data?.name, symbol: data?.symbol, balance: data?.balance, defaultWallet: data?.defaultWallet, deleted: data?.deleted)
+            let data = viewModel.data.wallets[indexPath.row]
+            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet, deleted: data.deleted)
             return cell
         case .commodityWallets:
-            let data =  collectionData?.commodityWallets[indexPath.row]
-            cell.bind(name: data?.name, symbol: data?.symbol, balance: data?.balance, defaultWallet: data?.defaultWallet, deleted: data?.deleted)
+            let data = viewModel.data.commodityWallets[indexPath.row]
+            cell.bind(name: data.name, symbol: data.symbol, balance: data.balance, defaultWallet: data.defaultWallet, deleted: data.deleted)
             return cell
         }
         

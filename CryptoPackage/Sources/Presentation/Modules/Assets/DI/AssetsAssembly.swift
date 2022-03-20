@@ -4,10 +4,10 @@ import Domain
 
 public class AssetsAssembly {
     
-    let useCase: GetCollectionUseCase
+    let data: Collection
     
-    public init(useCase: GetCollectionUseCase) {
-        self.useCase = useCase
+    public init(data: Collection) {
+        self.data = data
     }
     
     public func build() -> UIViewController {
@@ -18,7 +18,7 @@ public class AssetsAssembly {
 extension AssetsAssembly {
 
     private func makeViewModel() -> AssetsViewModel {
-        AssetsViewModel(getCollectionUseCase: useCase)
+        AssetsViewModel(data: data)
     }
     
 }
