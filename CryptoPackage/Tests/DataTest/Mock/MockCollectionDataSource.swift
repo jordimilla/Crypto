@@ -3,9 +3,11 @@ import Combine
 import Domain
 
 final class MockCollectionDataSource: CollectionDataSource {
-    var result: AnyPublisher<Collection, Error>!
+    
+    var collectionStub: CombineMethodStub<Collection> = CombineMethodStub()
 
     func retrieveCollection() -> AnyPublisher<Collection, Error> {
-        result
+        collectionStub.doCall()
+        return collectionStub.result
     }
 }

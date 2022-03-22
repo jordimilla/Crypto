@@ -27,8 +27,6 @@ public class FeatureAssembly {
                               selectedIndex: index).build()
     }
     
-    
-    
     public static let assetsFeature: SingleParamFeatureProvider<Collection> = { navigationController, data  in
         let useCase = GetCollectionUseCase(collectionRepository: RepositoryAssembly.makeCollectionRepository(),
                                            dispacherHelper: HelperAssemblyModule.dispacherHelperProvider())

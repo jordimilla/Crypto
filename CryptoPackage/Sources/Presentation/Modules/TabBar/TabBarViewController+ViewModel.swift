@@ -21,6 +21,7 @@ extension TabBarViewController {
             case .loading:
                 print("Loading")
             case .success(let collection):
+                
                 self?.setupTabBarController(data: collection)
             case .failure:
                 print("failure")

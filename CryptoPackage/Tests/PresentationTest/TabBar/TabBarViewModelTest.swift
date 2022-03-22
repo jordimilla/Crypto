@@ -35,7 +35,6 @@ final class TabBarViewModelTest: XCTestCase {
         
         sut.$collectionObservable.bind(action: binding)
       
-        // THEN
         XCTAssertEqual(expectedCollection, collection)
    
     }

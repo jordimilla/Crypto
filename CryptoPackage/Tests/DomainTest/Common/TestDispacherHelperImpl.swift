@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-@testable import Crypto
+@testable import Domain
 
 internal class TestDispacherHelperImpl: DispacherHelper {
     

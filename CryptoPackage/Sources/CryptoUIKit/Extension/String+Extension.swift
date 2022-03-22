@@ -2,10 +2,12 @@ import Foundation
 
 extension String{
    func convertDoubleToCurrency() -> String {
-       let amount1 = Double(self)
+       guard let amount = Double(self) else {
+           return ""
+       }
        let numberFormatter = NumberFormatter()
        numberFormatter.numberStyle = .currency
        numberFormatter.locale = Locale(identifier: Locale.current.identifier)
-       return numberFormatter.string(from: NSNumber(value: amount1!))!
+       return numberFormatter.string(from: NSNumber(value: amount)) ?? ""
    }
 }

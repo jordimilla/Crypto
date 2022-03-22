@@ -22,10 +22,8 @@ final class TabBarAssemblyTest: XCTestCase {
     }
     
     func test_get_tabbarviewcontorller_when_build() {
-        // WHEN
         let viewController = sut.build()
         
-        // THEN
         XCTAssertTrue(viewController is TabBarViewController)
     }
 }

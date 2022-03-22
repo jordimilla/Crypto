@@ -21,10 +21,8 @@ final class WalletsAssetsAssemblyTest: XCTestCase {
     }
     
     func test_get_walletsviewcontroller_when_build() {
-        // WHEN
         let viewController = sut.build()
         
-        // THEN
         XCTAssertTrue(viewController is WalletsViewController)
     }
 }
