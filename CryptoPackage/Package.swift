@@ -34,7 +34,8 @@ let package = Package(
                 resources: [.process("Resources/data.json")]
                ),
         .testTarget(name: "DataTest",
-                    dependencies: ["Data"]
+                    dependencies: ["Data"],
+                    resources: [.process("JSONFileReader/json_file_reader_test.json")]
                    ),
         
         .target(name: "Presentation",
