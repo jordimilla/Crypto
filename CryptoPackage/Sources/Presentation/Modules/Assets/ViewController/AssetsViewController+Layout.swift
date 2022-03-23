@@ -45,6 +45,7 @@ extension AssestsViewController {
     
     private func setupView() {
         view.backgroundColor = Color.background.color
+        view.accessibilityIdentifier = Constants.assetScreenIdentifier
     }
     
     private func setupStackView() {

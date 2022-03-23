@@ -13,12 +13,16 @@
 		C4B7DA8227E5127E004C7DA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B7DA8127E5127E004C7DA4 /* Assets.xcassets */; };
 		C4B7DA8527E5127E004C7DA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4B7DA8327E5127E004C7DA4 /* LaunchScreen.storyboard */; };
 		C4B7DA9027E5127F004C7DA4 /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA8F27E5127F004C7DA4 /* CryptoTests.swift */; };
-		C4B7DA9A27E5127F004C7DA4 /* CryptoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA9927E5127F004C7DA4 /* CryptoUITests.swift */; };
-		C4B7DA9C27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DA9B27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift */; };
 		C4B7DAAF27E525BE004C7DA4 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAAE27E525BE004C7DA4 /* Data */; };
 		C4B7DAB127E525BE004C7DA4 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAB027E525BE004C7DA4 /* Domain */; };
 		C4B7DAB927E53022004C7DA4 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = C4B7DAB827E53022004C7DA4 /* Presentation */; };
 		C4B7DAC127E54362004C7DA4 /* FeatureAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7DAC027E54362004C7DA4 /* FeatureAssembly.swift */; };
+		C4D46B3827EBA28A007E9A16 /* TabBarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D46B3627EBA28A007E9A16 /* TabBarScreen.swift */; };
+		C4D46B3927EBA28A007E9A16 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D46B3727EBA28A007E9A16 /* BaseScreen.swift */; };
+		C4D46B3B27EBA332007E9A16 /* CryptoUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = C4D46B3A27EBA332007E9A16 /* CryptoUIKit */; };
+		C4D46B3D27EBA332007E9A16 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = C4D46B3C27EBA332007E9A16 /* Presentation */; };
+		C4D46B4027EBA3D3007E9A16 /* TabBarSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D46B3F27EBA3D3007E9A16 /* TabBarSteps.swift */; };
+		C4D46B4327EBA4C6007E9A16 /* TVShowFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D46B4227EBA4C6007E9A16 /* TVShowFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,10 +53,12 @@
 		C4B7DA8B27E5127F004C7DA4 /* CryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B7DA8F27E5127F004C7DA4 /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
 		C4B7DA9527E5127F004C7DA4 /* CryptoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4B7DA9927E5127F004C7DA4 /* CryptoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUITests.swift; sourceTree = "<group>"; };
-		C4B7DA9B27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C4B7DAA827E512B2004C7DA4 /* CryptoPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CryptoPackage; path = ../CryptoPackage; sourceTree = "<group>"; };
 		C4B7DAC027E54362004C7DA4 /* FeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureAssembly.swift; sourceTree = "<group>"; };
+		C4D46B3627EBA28A007E9A16 /* TabBarScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarScreen.swift; sourceTree = "<group>"; };
+		C4D46B3727EBA28A007E9A16 /* BaseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
+		C4D46B3F27EBA3D3007E9A16 /* TabBarSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSteps.swift; sourceTree = "<group>"; };
+		C4D46B4227EBA4C6007E9A16 /* TVShowFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D46B3D27EBA332007E9A16 /* Presentation in Frameworks */,
+				C4D46B3B27EBA332007E9A16 /* CryptoUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +138,9 @@
 		C4B7DA9827E5127F004C7DA4 /* CryptoUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C4B7DA9927E5127F004C7DA4 /* CryptoUITests.swift */,
-				C4B7DA9B27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift */,
+				C4D46B4127EBA4BA007E9A16 /* Features */,
+				C4D46B3E27EBA3B5007E9A16 /* Steps */,
+				C4D46B3527EBA28A007E9A16 /* Screens */,
 			);
 			path = CryptoUITests;
 			sourceTree = "<group>";
@@ -149,6 +158,31 @@
 				C4B7DAC027E54362004C7DA4 /* FeatureAssembly.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		C4D46B3527EBA28A007E9A16 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C4D46B3627EBA28A007E9A16 /* TabBarScreen.swift */,
+				C4D46B3727EBA28A007E9A16 /* BaseScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C4D46B3E27EBA3B5007E9A16 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				C4D46B3F27EBA3D3007E9A16 /* TabBarSteps.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		C4D46B4127EBA4BA007E9A16 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				C4D46B4227EBA4C6007E9A16 /* TVShowFeature.swift */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +242,10 @@
 				C4B7DA9727E5127F004C7DA4 /* PBXTargetDependency */,
 			);
 			name = CryptoUITests;
+			packageProductDependencies = (
+				C4D46B3A27EBA332007E9A16 /* CryptoUIKit */,
+				C4D46B3C27EBA332007E9A16 /* Presentation */,
+			);
 			productName = CryptoUITests;
 			productReference = C4B7DA9527E5127F004C7DA4 /* CryptoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -231,6 +269,7 @@
 					};
 					C4B7DA9427E5127F004C7DA4 = {
 						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1330;
 						TestTargetID = C4B7DA7427E5127B004C7DA4;
 					};
 				};
@@ -305,8 +344,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4B7DA9A27E5127F004C7DA4 /* CryptoUITests.swift in Sources */,
-				C4B7DA9C27E5127F004C7DA4 /* CryptoUITestsLaunchTests.swift in Sources */,
+				C4D46B3927EBA28A007E9A16 /* BaseScreen.swift in Sources */,
+				C4D46B4327EBA4C6007E9A16 /* TVShowFeature.swift in Sources */,
+				C4D46B3827EBA28A007E9A16 /* TabBarScreen.swift in Sources */,
+				C4D46B4027EBA3D3007E9A16 /* TabBarSteps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,14 +590,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D7R9UAAYXJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CryptoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Crypto;
@@ -567,10 +615,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D7R9UAAYXJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CryptoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -632,6 +686,14 @@
 			productName = Domain;
 		};
 		C4B7DAB827E53022004C7DA4 /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
+		};
+		C4D46B3A27EBA332007E9A16 /* CryptoUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CryptoUIKit;
+		};
+		C4D46B3C27EBA332007E9A16 /* Presentation */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Presentation;
 		};

@@ -1,11 +1,6 @@
-//
-//  AppDelegate.swift
-//  Crypto
-//
-//  Created by Jordi Milla on 18/3/22.
-//
-
 import UIKit
+import Kingfisher
+import PocketSVG
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

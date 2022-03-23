@@ -23,17 +23,14 @@ class GetCollectionUseCaseTest: XCTestCase {
     func test_should_User_see_Colletion() {
         // given
         let mockCollection = createMockCollection()
-        
         mockCollectionRepository.getCollectionStub.given(mockCollection)
         
         // when
         let result: Result<Collection, Error> = blockingAndGet(from: sut.build(params: .none))
         
         // then
-        XCTAssertNotNil(result.value)
+        XCTAssertNotNil(result.value())
         XCTAssertTrue(mockCollectionRepository.getCollectionStub.called)
-
-
     }
     
 }

@@ -29,6 +29,7 @@ class TabBarViewController: UIViewController {
     
     func setupView() {
         view.backgroundColor = Color.background.color
+        view.accessibilityIdentifier = Constants.tabBarScreenIdentifier
     }
     
     func setupTabBarController(data: Collection) {
@@ -74,6 +75,7 @@ extension TabBarViewController {
         static let iconAssets: String = "bookmark"
         static let iconWallets: String = "folder"
         
+        static let tabBarScreenIdentifier: String = "tabBarScreen"
         static let tabAssetsIdentifier: String = "tabBarAsset"
         static let tabWalletIdentifier: String = "tabBarWallet"
     }
