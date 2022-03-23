@@ -21,15 +21,13 @@ final class CollectionRepositoryTest: XCTestCase {
     func test_retrieve_collection_repsitory() {
         //give
         let expected = createMockCollection()
-        
-        // when
         mockCollectionDataSource.collectionStub.given(expected)
-        
         // when
-        let result = mockCollectionDataSource.retrieveCollection()
+        let result = blockingAndGet(from: mockCollectionDataSource.retrieveCollection())
         
         // then
-        XCTAssertNotNil(result)
+        XCTAssertEqual(result.value(), expected)
+        XCTAssertNil(result.error)
         XCTAssertTrue(mockCollectionDataSource.collectionStub.called)
         
 
@@ -39,11 +37,11 @@ final class CollectionRepositoryTest: XCTestCase {
 
 extension CollectionRepositoryTest {
     private func createMockCollection() -> Collection {
-        Collection(cryptoCoin: [CryptoCoin(name: "", icon: "", symbol: "", price: "")],
-                                  commodities: [Commodities(name: "", icon: "", symbol: "", price: "")],
-                                  fiats: [Fiat(name: "", icon: "", symbol: "", hasWallets: true)],
-                                  wallets: [Wallet(name: "", symbol: "", balance: "", defaultWallet: true, deleted: false)],
-                                  commodityWallets: [CommodityWallet(name: "", symbol: "", balance: "", defaultWallet: true, deleted: false)],
-                                  fiatWallets: [FiatWallet(name: "", symbol: "", balance: "", defaultWallet: true, deleted: false)])
+        Collection(cryptoCoin: [CryptoCoin(name: "name1", icon: "", symbol: "", price: "")],
+                   commodities: [Commodities(name: "", icon: "", symbol: "", price: "")],
+                   fiats: [Fiat(name: "", icon: "", symbol: "", hasWallets: true)],
+                   wallets: [Wallet(name: "", symbol: "", balance: "", defaultWallet: true, deleted: false)],
+                   commodityWallets: [CommodityWallet(name: "", symbol: "", balance: "", defaultWallet: true, deleted: false)],
+                   fiatWallets: [FiatWallet(name: "", symbol: "", balance: "", defaultWallet: true, deleted: false)])
     }
 }

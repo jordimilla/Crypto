@@ -2,9 +2,9 @@ import Foundation
 
 public extension Result {
     
-    var value: Any? {
+    func value<T>() -> T? {
         if case let .success(data) = self {
-            return data
+            return data as? T
         }
         return .none
         
